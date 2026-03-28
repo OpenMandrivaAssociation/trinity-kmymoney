@@ -70,8 +70,8 @@ BuildRequires:  pkgconfig(libofx)
 BuildRequires:	opensp-devel
 
 # TQT3-sqlite3
-BuildRequires:	libtqt3-mt-sqlite3
-Requires:		libtqt3-mt-sqlite3
+BuildRequires:	%{_lib}tqt3-mt-sqlite3
+Requires:		%{_lib}tqt3-mt-sqlite3
 
 Requires:		%{name}-common = %{?epoch:%{epoch}:}%{version}-%{release}
 
@@ -116,17 +116,7 @@ have '%{name}' package installed, you will hardly find this package useful.
 %{tde_prefix}/share/apps/kmymoney2/
 %{tde_prefix}/share/config.kcfg/kmymoney2.kcfg
 %{tde_prefix}/share/icons/hicolor/*/*/*.png
-#%dir %{tde_prefix}/share/icons/Tango/
-#%dir %{tde_prefix}/share/icons/Tango/*/
-#%dir %{tde_prefix}/share/icons/Tango/*/*/
-#%{tde_prefix}/share/icons/Tango/*/*/*.png
-#%{tde_prefix}/share/icons/Tango/scalable/*.svgz
 %{tde_prefix}/share/icons/locolor/*/*/*.png
-#%dir %{tde_prefix}/share/icons/oxygen/
-#%dir %{tde_prefix}/share/icons/oxygen/*/
-#%dir %{tde_prefix}/share/icons/oxygen/*/*/
-#%{tde_prefix}/share/icons/oxygen/*/*/*.png
-#%{tde_prefix}/share/icons/oxygen/scalable/*.svgz
 %{tde_prefix}/share/doc/tde/HTML/en/kmymoney2/
 %{tde_prefix}/share/man/man1/kmymoney2.*
 %{tde_prefix}/share/apps/kmm_ofximport/
