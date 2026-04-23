@@ -23,7 +23,7 @@
 
 Name:		trinity-%{tde_pkg}
 Version:	1.0.5
-Release:	%{?tde_version:%{tde_version}_}3
+Release:	%{?tde_version:%{tde_version}_}4
 Summary:	Personal finance manager for TDE
 Group:		Applications/Utilities
 URL:		http://www.trinitydesktop.org/
@@ -70,10 +70,10 @@ BuildRequires:  pkgconfig(libofx)
 BuildRequires:	opensp-devel
 
 # TQT3-sqlite3
-BuildRequires:	%{_lib}tqt3-mt-sqlite3
-Requires:		%{_lib}tqt3-mt-sqlite3
+BuildRequires:	pkgconfig(tqt-mt)
+# Requires:		%{_lib}tqt3-mt-sqlite3
 
-Requires:		%{name}-common = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:		%{name}-common = %{EVRD}
 
 BuildRequires:  ghostscript
 BuildRequires:  pkgconfig(xrender)
