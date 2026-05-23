@@ -1,10 +1,6 @@
 %bcond clang 1
 
 # TDE variables
-%if "%{?tde_version}" == ""
-%define tde_version 14.1.5
-%endif
-
 %define tde_pkg kmymoney
 %define tde_prefix /opt/trinity
 
@@ -17,13 +13,13 @@
 %define _disable_rebuild_configure 1
 
 # fixes error: Empty %files file …/debugsourcefiles.list
-%define _debugsource_template %{nil}
+%undefine _debugsource_template
 
 %define tarball_name %{tde_pkg}-trinity
 
 Name:		trinity-%{tde_pkg}
-Version:	1.0.5
-Release:	%{?tde_version:%{tde_version}_}4
+Version:	14.1.6
+Release:	1
 Summary:	Personal finance manager for TDE
 Group:		Applications/Utilities
 URL:		http://www.trinitydesktop.org/
@@ -31,7 +27,7 @@ URL:		http://www.trinitydesktop.org/
 License:	GPLv2+
 
 
-Source0:		https://mirror.ppa.trinitydesktop.org/trinity/releases/R%{tde_version}/main/applications/office/%{tarball_name}-%{tde_version}.tar.xz
+Source0:		https://mirror.ppa.trinitydesktop.org/trinity/releases/R%{version}/main/applications/office/%{tarball_name}-%{version}.tar.xz
 Source1:		kmymoneytitlelabel.png
 Source2:		%{name}-rpmlintrc
 
@@ -49,9 +45,10 @@ BuildOption:    -DWITH_ALL_OPTIONS=ON
 BuildOption:    -DBUILD_ALL=ON
 BuildOption:    -DWITH_GCC_VISIBILITY=%{!?with_clang:ON}%{?with_clang:OFF}
 
-BuildRequires:	trinity-tdelibs-devel >= %{tde_version}
-BuildRequires:	trinity-tdebase-devel >= %{tde_version}
-BuildRequires:  trinity-tde-cmake >= %{tde_version}
+BuildRequires:	trinity-tdelibs-devel >= %{version}
+BuildRequires:	trinity-tdebase-devel >= %{version}
+BuildRequires:  trinity-tde-cmake >= %{version}
+
 BuildRequires:	desktop-file-utils
 
 %{!?with_clang:BuildRequires:	gcc-c++}
@@ -104,7 +101,7 @@ support.
 %package common
 Summary:		KMyMoney architecture independent files
 Group:			Applications/Utilities
-Requires:		%{name} = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:		%{name} = %{EVRD}
 
 %description common
 This package contains architecture independent files needed for KMyMoney to
@@ -127,7 +124,7 @@ have '%{name}' package installed, you will hardly find this package useful.
 %package devel
 Summary:		KMyMoney development files
 Group:			Development/Libraries
-Requires:		%{name} = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:		%{name} = %{EVRD}
 
 %description devel
 This package contains development files needed for KMyMoney plugins.
